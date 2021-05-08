@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Area</title>
+	<link rel="stylesheet" href="{% static 'css/area.css' %}">
+</head>
+<body>
+
+	<header>
+		<nav>
+			<a href="{% url 'base' %}" data-target="anchor">
+				<div class="logo">
+					<img src="{% static 'img/logo-header.png' %}" alt="UZPROTECT">
+					<h1>UZPROTECT</h1>
+				</div>
+			</a>
+			<ul>
+				<li>
+					<a href="{% url 'base' %}" data-target="anchor">ГЛАВНАЯ</a>
+				</li>
+				{% for category in categories %}
+				<li>
+					<a href="{{category.get_absolute_url}}" data-target="anchor">{{category.name}}</a>
+				</li>
+				{% endfor %}
+			</ul>
+		</nav>
+	</header>
+
+	<div class="main_section">
+		<div class="row">
+			{% for product in products_by_category %}
+			<div class="col" style="margin-top: 50px">
+				<img src="{{product.image.url}}" alt="Image">
+				<div class="text">
+					<h1>{{product.name}}</h1>
+					<p>{{product.description}}</p>
+					<span>Цена: {{product.price}}$</span>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<footer>
+		<div class="footer_container">
+			<p>© 2020 UZPROTECT</p>
+		</div>
+	</footer>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="{% static 'js/wow.min.js' %}" ></script>
+	<script src="{% static 'js/anchor2.js' %}"></script>
+	<script src="{% static 'js/parallax.min.js' %}"></script>
+	<script>
+		new WOW().init();
+	</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Uzprotect</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <div class="section-header parallax--bg" id="home" data-parallax="scroll" data-image-src = "{% static 'img/skyline4.jpg' %}" data-speed="0.5">
+            <header>
+                <div class="wrapper navbar">
+                    <a href="#home" data-target="anchor"><div class="logo">
+                        <img src="{% static 'img/logo-header.png' %}" alt="">
+                        <h1>UZPROTECT</h1>
+                    </div></a>
+                    <nav>
+                        <ul class="topnav respinsive" id="myTopnav">
+                            <li><a href="#home" data-target="anchor">ГЛАВНАЯ</a></li>
+                            <li><a href="#areaswork" data-target="anchor">СФЕРА ДЕЯТЕЛЬНОСТИ</a></li>
+                            <li><a href="#about_us" data-target="anchor">О НАС</a></li>
+                            <li><a href="#contacts" data-target="anchor">КОНТАКТЫ</a></li>
+                            <li><a href="#" class="icon" id="menu">&#9776;</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+            <div class="wrappper">
+                <div class="caption">
+                    <h1 class="wow fadeIn"  data-wow-duration="3s">UZPROTECT</h1>
+                    <h2 class="wow fadeIn"  data-wow-duration="3s">Технология Защиты</h2>
+                </div>
+            </div>
+
+        </div>
+
+        <section class="areaswork" id="areaswork">
+            <div class=" block1">
+                <div class="wrapper">
+                    <h1 class="wow fadeIn" data-wow-duration="3s">СФЕРЫ</h1>
+                    <h2 class="wow fadeIn" data-wow-duration="3s">ДЕЯТЕЛЬНОСТИ</h2>
+                </div>
+            </div>
+            <div class="block2 wow fadeIn" data-wow-duration="3s">
+              {% for category in categories %}
+                <div class="description h1">
+                    <div class="red-point first-point"> </div>
+                    <a href="{{category.get_absolute_url}}"><h1 class="hh1">{{category.name}}</h1></a>
+                </div>
+              {% endfor %}
+            </div>
+        </section>
+
+        <section class="about_us" id="about_us">
+            <h1 class="wow fadeIn" data-wow-duration="3s"><strong>О</strong> НАС</h1>
+            <h2 class="wow fadeIn" data-wow-duration="3s">UZPROTECT - команда профессионалов занимающихся комплексными поставками:</h2>
+            <ul class="wrapper wow fadeIn" data-wow-duration="3s">
+                {% for each in about_us %}
+                  <li>{{each.activity}}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+
+        <section class="last-section footer-bg" id="contacts" data-parallax="scroll" data-image-src = "{% static 'img/footer.jpg' %}" data-speed="0.3">
+                <div class="block-left">
+                    <a href="https://t.me/Saeclum" target="blunk" class="wrapper ">
+                        <h1 class="wow fadeIn" data-wow-duration="3s">СВЯЖИТЕСЬ</h1>
+                        <h2 class="wow fadeIn" data-wow-duration="3s">С НАМИ</h2>
+                    </a>
+                </div>
+                <div class="block-right">
+                    <div class="wrapper wow fadeIn" data-wow-duration="3s">
+                        <h1><strong>НАШ</strong> АДРЕС</h1>
+                        <ul>
+                            <li>Республика Узбекистан, г.Ташкент, ул. Узбекистон Овози-21</li>
+                            <li><strong>Email:</strong> <a href="mailto:info@uzprotect.com">info@uzprotect.com</a> </li>
+                            <li><strong>Телефон:</strong>  +998 (71) 233-62-77, 98 123-81-36, 93 515-44-69</li>
+                        </ul>
+                        <a href="https://goo.gl/maps/YZu1zSGjnVNLNHdu6" target="blank"><p>Смотреть на карте</p></a>
+                        <a href="https://t.me/uzprotect" target="blunk"><img src="{% static 'img/telegram.png' %}" alt=""></a>
+                    </div>
+                </div>
+        </section>
+
+        <footer>
+            <div class="footer-top wrapper">
+                <div class="arrows wrapper">
+                    <div class="arrow-right"></div>
+                    <div class="arrow-left"></div>
+                    <a href="#home" data-target="anchor"><h1>НАВЕРХ</h1></a>
+                </div>
+
+            </div>
+            <div class="footer-bottom wrapper">
+                <p> © 2020 UZPROTECT</p>
+            </div>
+        </footer>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{% static 'js/parallax.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/parallax.min.js' %}"></script>
+    <script src="{% static 'js/anchor.js' %}"></script>
+    <script src="{% static 'js/burger_menu.js' %}"></script>
+
+    <script>
+        new WOW().init();
+    </script>
+</body>
+</html>
